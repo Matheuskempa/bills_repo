@@ -58,7 +58,8 @@ O processo de geração de faturas é gerenciado pela classe `geracaoFaturas` co
    from bill_engine import geracaoFaturas
    
    caminho_wkhtml = r'caminho/para/wkhtmltopdf.exe'
-   gerador = geracaoFaturas(wkhtml_path=caminho_wkhtml)```
+   gerador = geracaoFaturas(wkhtml_path=caminho_wkhtml)
+   ```
 
 
 ### Explicação das Funções
