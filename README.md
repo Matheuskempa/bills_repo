@@ -9,7 +9,7 @@ Este projeto tem como objetivo gerar faturas em formato PDF a partir de dados fo
 ---
 
 ## Estrutura do Projeto
-
+```
 bills/
 │
 ├── bill_engine.py              # Script principal que gera as faturas
@@ -18,7 +18,7 @@ bills/
 ├── wkhtmltopdf.exe             # Executável do wkhtmltopdf para Windows (converter HTML para PDF)
 ├── marca_chess.png             # Logo/imagem utilizada no template da fatura
 └── historico_fatura_123456.pdf # Exemplo de uma fatura gerada em PDF
-
+```
 
 ---
 
