@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Faturas</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100%;
+            background-color: #ffffff;
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+
+        }
+        .page {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .container {
+            padding: 0;
+            width: 100%;
+            flex-grow: 1;
+        }
+        .brand-section {
+            background-color: #004282;
+            padding: 10px 15px;
+        }
+        .logo {
+            width: 60%;
+        }
+        .content {
+            padding: 0 15px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-6 {
+            width: 100%;
+        }
+        .text-white {
+            color: #fff;
+        }
+        .company-details {
+            float: right;
+            text-align: right;
+        }
+        .body-section {
+            padding: 17px;
+            border: 1px solid gray;
+            background-color: #ffffff;
+        }
+        .heading {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .sub-heading {
+            color: #262626;
+            margin-bottom: 10px;
+        }
+        footer {
+            padding-top: 100px;
+            padding-left: 22px;
+            padding-right: 22px;
+            position: relative;
+            background-color: #ffffff;
+            border-top: 1px solid #ddd;
+            grid-row: 3; 
+            text-align: center;
+        }
+        table {
+            background-color: #fff;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table thead tr {
+            border: 1px solid #111;
+            background-color: #f2f2f2;
+        }
+        table td {
+            vertical-align: middle !important;
+            text-align: center;
+        }
+        table th, table td {
+            padding: 8px;
+        }
+        .table-bordered {
+            box-shadow: 0px 0px 5px 0.5px gray;
+        }
+        .table-bordered td, .table-bordered th {
+            border: 1px solid #dee2e6;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .w-10 {
+            width: 10%;
+        }
+        .w-30 {
+            width: 30%;
+        }
+        .ff {
+            font-size: 9px;
+        }
+        .page-break {
+            page-break-before: always;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    {% for quebra in quebras_dict %}
+    <div class="page">
+        <div class="container">
+            <div class="brand-section">
+                <div class="row">
+                    <div class="col-6">
+                        <h1 class="text-white">
+                            Histórico de Faturas Conta: {{ conta }}
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body-section">
+                <div class="row">
+                    <div class="col-6">
+                        <h2 class="heading">Nome do Pagador / CPF / CNPJ / Endereço / Cidade / UF / CEP</h2>
+                        <p class="sub-heading">{{ nome }} / {{ cpf }} / {{ endereco }} / {{ cidade }} / {{ estado }} / {{ cep }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body-section">
+                <h3 class="heading">Histórico</h3>
+                <br>
+                <table class="table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="w-10">Vencimento</th>
+                            <th class="w-10">Total Fatura</th>
+                            <th class="w-10">Número Cartão</th>
+                            <th class="w-10">Data Transação</th>
+                            <th class="w-10">Débito/Crédito</th>
+                            <th class="w-30">Descrição</th>
+                            <th class="w-10">Valor Transação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for elemento in df_dict[quebra["quebras_1"]:quebra["quebras_2"]] %}
+                        <tr>
+                            {% for coluna in df_colunas %}
+                            <td class="ff">{{ elemento[coluna] }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <footer>
+            <img src="{{ image_path }}" alt="Image" style="width: 5%;"/>
+            <p>&copy; All rights reserved.</p>
+        </footer>
+        <div class="page-break"></div>
+    </div>
+    {% endfor %}
+</body>
+</html>
