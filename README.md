@@ -86,7 +86,8 @@ O script fake_data.py contém a função get_fake_data, que gera um DataFrame co
    ```python
   Copiar código
   from fake_data import get_fake_data
-  df = get_fake_data()```
+  df = get_fake_data()
+```
 
 Os dados incluem informações sobre a conta, como CPF, nome do titular, endereço e transações financeiras.
 
