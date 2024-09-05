@@ -65,11 +65,17 @@ O processo de geração de faturas é gerenciado pela classe `geracaoFaturas` co
 ### Explicação das Funções
 
 __init__: Inicia a classe e configura o caminho para o wkhtmltopdf.
+
 _get_environment: Carrega o template HTML a partir de um diretório específico.
+
 _clean_environment: Remove arquivos HTML temporários gerados após a criação do PDF.
+
 _get_variables: Extrai as variáveis necessárias para a renderização da fatura a partir do DataFrame.
+
 _render_template: Gera o arquivo HTML da fatura baseado no template e nas variáveis extraídas.
+
 _get_pdf: Converte o arquivo HTML gerado para PDF.
+
 __call__: Executa todo o processo de geração de faturas chamando as funções internas na sequência correta.
 
 
@@ -85,9 +91,11 @@ O script fake_data.py contém a função get_fake_data, que gera um DataFrame co
 Os dados incluem informações sobre a conta, como CPF, nome do titular, endereço e transações financeiras.
 
 ### Modificações e Personalizações
+
 * Template: O arquivo template_bill.html pode ser modificado para personalizar a aparência da fatura. Este template utiliza a sintaxe do Jinja2 para preencher os dados dinâmicos.
 * Imagens: A imagem marca_chess.png é inserida na fatura. Pode ser alterada conforme a necessidade.
 
 ## Observações
+
 O script foi projetado para rodar em Windows, mas pode ser adaptado para outros sistemas operacionais alterando a forma como o caminho para o wkhtmltopdf é tratado.
 O PDF gerado é salvo no mesmo diretório em que o script é executado.
