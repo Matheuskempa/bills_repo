@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import pdfkit as pdf
+import platform
 from jinja2 import Environment, FileSystemLoader
 
 
@@ -196,23 +197,42 @@ class geracaoFaturas:
         ---------
         name: str        
         """
-        config = pdf.configuration(wkhtmltopdf=self.wkhtml_path)
-        final_name = os.path.join(root, f"historico_fatura_{str(account)}.pdf")
-        print(final_name)
-        pdf.from_file(
-            os.path.join(root, name), 
-            final_name,
-            configuration=config,
-            options = {
-                'enable-local-file-access': True,
-                'page-size'    : 'A4',
-                'margin-top'   : '0.40in',
-                'margin-right' : '0.45in',
-                'margin-bottom': '0.45in',
-                'margin-left'  : '0.45in',
-                'encoding': "UTF-8" 
-                }
-            )
+        system = platform.system()
+        if system=="Windows":
+            config = pdf.configuration(wkhtmltopdf=self.wkhtml_path)
+            final_name = os.path.join(root, f"historico_fatura_{str(account)}.pdf")
+            print(final_name)
+            pdf.from_file(
+                os.path.join(root, name), 
+                final_name,
+                configuration=config,
+                options = {
+                    'enable-local-file-access': True,
+                    'page-size'    : 'A4',
+                    'margin-top'   : '0.40in',
+                    'margin-right' : '0.45in',
+                    'margin-bottom': '0.45in',
+                    'margin-left'  : '0.45in',
+                    'encoding': "UTF-8" 
+                    }
+                )
+        else:
+            final_name = os.path.join(root, f"historico_fatura_{str(account)}.pdf")
+            print(final_name)
+            pdf.from_file(
+                os.path.join(root, name), 
+                final_name,
+                options = {
+                    'enable-local-file-access': True,
+                    'page-size'    : 'A4',
+                    'margin-top'   : '0.40in',
+                    'margin-right' : '0.45in',
+                    'margin-bottom': '0.45in',
+                    'margin-left'  : '0.45in',
+                    'encoding': "UTF-8" 
+                    }
+                )
+
         return 'PDF CREATED!'
 
 
