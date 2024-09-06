@@ -96,7 +96,7 @@ Os dados incluem informações sobre a conta, como CPF, nome do titular, endere�
 * Template: O arquivo template_bill.html pode ser modificado para personalizar a aparência da fatura. Este template utiliza a sintaxe do Jinja2 para preencher os dados dinâmicos.
 * Imagens: A imagem marca_chess.png é inserida na fatura. Pode ser alterada conforme a necessidade.
 
-## Observações
+### Observações
 
 O script foi projetado para rodar em Windows, mas pode ser adaptado para outros sistemas operacionais alterando a forma como o caminho para o wkhtmltopdf é tratado.
 O PDF gerado é salvo no mesmo diretório em que o script é executado.
